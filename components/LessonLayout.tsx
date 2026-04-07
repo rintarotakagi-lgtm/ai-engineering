@@ -30,9 +30,9 @@ export default function LessonLayout({ lesson }: { lesson: Lesson }) {
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       {/* Lesson Header */}
-      <header className="border-b border-zinc-200 dark:border-zinc-800">
+      <header className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/50">
         <div className="mx-auto max-w-3xl px-6 py-10">
-          <p className="mb-2 text-sm text-zinc-400">
+          <p className="mb-2 text-sm font-medium text-amber-600 dark:text-amber-400">
             Lesson {lessonNumber}
           </p>
           <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
