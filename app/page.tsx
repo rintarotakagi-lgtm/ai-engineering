@@ -1,6 +1,25 @@
 import Link from "next/link";
 import { curriculum } from "@/content/curriculum";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "機械学習の教科書",
+  description:
+    "かんたん大学数学で理解する。線形回帰からLLMまで、インタラクティブなデモ付きで機械学習の理論を体系的に学べる無料サイト。",
+  provider: {
+    "@type": "Organization",
+    name: "株式会社Uribo",
+  },
+  isAccessibleForFree: true,
+  inLanguage: "ja",
+  hasCourseInstance: {
+    "@type": "CourseInstance",
+    courseMode: "online",
+    courseWorkload: "PT15H",
+  },
+};
+
 export default function Home() {
   const phases = curriculum.reduce(
     (acc, item) => {
@@ -13,6 +32,10 @@ export default function Home() {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Header */}
       <header className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/50">
         <div className="mx-auto max-w-3xl px-6 py-14">

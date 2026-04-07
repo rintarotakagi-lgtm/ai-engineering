@@ -1,8 +1,11 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { curriculum } from "@/content/curriculum";
 import lesson1 from "@/content/lessons/lesson1";
 import lesson2 from "@/content/lessons/lesson2";
 import LessonLayout from "@/components/LessonLayout";
+
+const BASE_URL = "https://ai-engineering-three.vercel.app";
 
 const lessons = {
   "linear-regression": lesson1,
@@ -15,15 +18,37 @@ export function generateStaticParams() {
   return curriculum.filter((c) => c.available).map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({ params }: { params: Promise<Params> }) {
-  return params.then(({ slug }) => {
-    const item = curriculum.find((c) => c.slug === slug);
-    if (!item) return {};
-    return {
-      title: `${item.title} — 機械学習の教科書`,
-      description: item.subtitle,
-    };
-  });
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const item = curriculum.find((c) => c.slug === slug);
+  if (!item) return {};
+
+  const lessonNumber = curriculum.findIndex((c) => c.slug === slug) + 1;
+  const title = `Lesson ${lessonNumber}: ${item.title}`;
+  const description = `${item.subtitle}。インタラクティブなデモ付きで${item.title}の理論を学ぶ。`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} — 機械学習の教科書`,
+      description,
+      url: `${BASE_URL}/lessons/${slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} — 機械学習の教科書`,
+      description,
+    },
+    alternates: {
+      canonical: `${BASE_URL}/lessons/${slug}`,
+    },
+  };
 }
 
 export default async function LessonPage({
