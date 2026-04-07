@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${notoSansJP.variable} antialiased`}>
       <body className="flex min-h-screen flex-col bg-white font-[family-name:var(--font-noto-sans-jp)] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+        <GoogleAnalytics />
         <Navbar />
         <div className="flex-1">{children}</div>
         <Footer />
