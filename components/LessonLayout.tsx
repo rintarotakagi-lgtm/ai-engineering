@@ -30,25 +30,15 @@ export default function LessonLayout({ lesson }: { lesson: Lesson }) {
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       {/* Lesson Header */}
-      <header className="relative overflow-hidden bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 text-white">
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="relative mx-auto max-w-3xl px-6 py-10">
-          <div className="mb-4 flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-sm font-bold shadow-lg shadow-amber-500/20">
-              {lessonNumber}
-            </span>
-            <span className="rounded-full border border-zinc-600 px-3 py-0.5 text-xs text-zinc-400">
-              Lesson {lessonNumber} / {curriculum.length}
-            </span>
-          </div>
-          <h1 className="text-3xl font-bold sm:text-4xl">{lesson.title}</h1>
-          <p className="mt-3 text-lg text-zinc-400">{lesson.subtitle}</p>
+      <header className="border-b border-zinc-200 dark:border-zinc-800">
+        <div className="mx-auto max-w-3xl px-6 py-10">
+          <p className="mb-2 text-sm text-zinc-400">
+            Lesson {lessonNumber}
+          </p>
+          <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+            {lesson.title}
+          </h1>
+          <p className="mt-2 text-zinc-500">{lesson.subtitle}</p>
         </div>
       </header>
 
@@ -58,7 +48,7 @@ export default function LessonLayout({ lesson }: { lesson: Lesson }) {
           <div className="flex items-center gap-4 py-3">
             <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-amber-400 to-orange-500 transition-all duration-300"
+                className="h-full rounded-full bg-amber-400 transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -139,7 +129,7 @@ export default function LessonLayout({ lesson }: { lesson: Lesson }) {
               )
             }
             disabled={currentSection === lesson.sections.length - 1}
-            className="rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/20 transition-all hover:shadow-amber-500/30 disabled:opacity-30 disabled:shadow-none"
+            className="rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-30 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
           >
             次のセクション →
           </button>
