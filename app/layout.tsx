@@ -10,13 +10,13 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "AI Engineering — ゼロから学ぶ機械学習・深層学習",
+  title: "機械学習の教科書 — かんたん大学数学で理解する",
   description:
-    "インタラクティブなデモ付きで、機械学習から LLM まで体系的に学べる無料学習サイト。株式会社Uribo 運営。",
+    "線形回帰からLLMまで、インタラクティブなデモ付きで機械学習の理論を体系的に学べる無料サイト。",
   openGraph: {
-    title: "AI Engineering — ゼロから学ぶ機械学習・深層学習",
+    title: "機械学習の教科書 — かんたん大学数学で理解する",
     description:
-      "インタラクティブなデモ付きで、機械学習から LLM まで体系的に学べる無料学習サイト。",
+      "線形回帰からLLMまで、インタラクティブなデモ付きで機械学習の理論を体系的に学べる無料サイト。",
     type: "website",
   },
 };

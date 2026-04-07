@@ -20,7 +20,7 @@ export function generateMetadata({ params }: { params: Promise<Params> }) {
     const item = curriculum.find((c) => c.slug === slug);
     if (!item) return {};
     return {
-      title: `${item.title} — AI Engineering`,
+      title: `${item.title} — 機械学習の教科書`,
       description: item.subtitle,
     };
   });

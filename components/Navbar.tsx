@@ -10,7 +10,7 @@ export default function Navbar() {
           href="/"
           className="text-sm font-semibold text-zinc-900 dark:text-zinc-100"
         >
-          AI Engineering
+          機械学習の教科書
         </Link>
         <span className="text-xs text-zinc-400">by Uribo</span>
       </div>

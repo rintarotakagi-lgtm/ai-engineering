@@ -17,12 +17,14 @@ export default function Home() {
       <header className="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/50">
         <div className="mx-auto max-w-3xl px-6 py-14">
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            AI Engineering
+            機械学習の教科書
           </h1>
-          <p className="mt-3 leading-relaxed text-zinc-500">
-            機械学習から LLM まで、理論をインタラクティブに学ぶ。
-            <br />
-            全{curriculum.length}レッスン、すべて無料で公開しています。
+          <p className="mt-2 text-lg text-zinc-500">
+            かんたん大学数学で理解する
+          </p>
+          <p className="mt-4 leading-relaxed text-zinc-500">
+            線形回帰から LLM まで、全{curriculum.length}レッスン。
+            インタラクティブなデモ付きで、すべて無料で公開しています。
           </p>
         </div>
       </header>
