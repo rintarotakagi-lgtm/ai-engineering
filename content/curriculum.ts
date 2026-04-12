@@ -65,21 +65,21 @@ export const curriculum: CurriculumItem[] = [
     title: "Attention機構",
     subtitle: "なぜRNNを超えたか",
     phase: "Phase 3: Transformerへの道",
-    available: false,
+    available: true,
   },
   {
     slug: "transformer",
     title: "Transformer",
     subtitle: "Self-Attention、位置エンコーディング",
     phase: "Phase 3: Transformerへの道",
-    available: false,
+    available: true,
   },
   {
     slug: "bert-vs-gpt",
     title: "BERT vs GPT",
     subtitle: "エンコーダ vs デコーダ、事前学習",
     phase: "Phase 3: Transformerへの道",
-    available: false,
+    available: true,
   },
   // Phase 4: LLMの科学
   {

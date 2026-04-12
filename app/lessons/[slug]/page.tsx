@@ -9,6 +9,9 @@ import lesson5 from "@/content/lessons/lesson5";
 import lesson6 from "@/content/lessons/lesson6";
 import lesson7 from "@/content/lessons/lesson7";
 import lesson8 from "@/content/lessons/lesson8";
+import lesson9 from "@/content/lessons/lesson9";
+import lesson10 from "@/content/lessons/lesson10";
+import lesson11 from "@/content/lessons/lesson11";
 import LessonLayout from "@/components/LessonLayout";
 
 const BASE_URL = "https://ai-engineering-three.vercel.app";
@@ -22,6 +25,9 @@ const lessons = {
   "backpropagation": lesson6,
   "cnn": lesson7,
   "rnn-lstm": lesson8,
+  "attention": lesson9,
+  "transformer": lesson10,
+  "bert-vs-gpt": lesson11,
 } as const;
 
 type Params = { slug: string };
