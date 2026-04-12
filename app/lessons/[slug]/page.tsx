@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { curriculum } from "@/content/curriculum";
 import lesson1 from "@/content/lessons/lesson1";
 import lesson2 from "@/content/lessons/lesson2";
+import lesson3 from "@/content/lessons/lesson3";
+import lesson4 from "@/content/lessons/lesson4";
+import lesson5 from "@/content/lessons/lesson5";
 import LessonLayout from "@/components/LessonLayout";
 
 const BASE_URL = "https://ai-engineering-three.vercel.app";
@@ -10,6 +13,9 @@ const BASE_URL = "https://ai-engineering-three.vercel.app";
 const lessons = {
   "linear-regression": lesson1,
   "logistic-regression": lesson2,
+  "regularization": lesson3,
+  "kernel-svm": lesson4,
+  "perceptron-mlp": lesson5,
 } as const;
 
 type Params = { slug: string };

@@ -21,14 +21,14 @@ export const curriculum: CurriculumItem[] = [
     title: "正則化と汎化",
     subtitle: "バイアス-バリアンス、L1/L2、過学習",
     phase: "Phase 1: 機械学習の理論",
-    available: false,
+    available: true,
   },
   {
     slug: "kernel-svm",
     title: "カーネル法・SVM",
     subtitle: "非線形分離、カーネルトリック",
     phase: "Phase 1: 機械学習の理論",
-    available: false,
+    available: true,
   },
   // Phase 2: ニューラルネットワーク
   {
@@ -36,7 +36,7 @@ export const curriculum: CurriculumItem[] = [
     title: "パーセプトロン → 多層NN",
     subtitle: "万能近似定理、活性化関数",
     phase: "Phase 2: ニューラルネットワーク",
-    available: false,
+    available: true,
   },
   {
     slug: "backpropagation",

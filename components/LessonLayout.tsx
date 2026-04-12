@@ -8,10 +8,16 @@ import RichText from "./RichText";
 import Quiz from "./Quiz";
 import { interactiveRegistry as lesson1Registry } from "./interactives/lesson1";
 import { lesson2Registry } from "./interactives/lesson2";
+import { lesson3Registry } from "./interactives/lesson3";
+import { lesson4Registry } from "./interactives/lesson4";
+import { lesson5Registry } from "./interactives/lesson5";
 
 const interactiveRegistry: Record<string, React.ComponentType> = {
   ...lesson1Registry,
   ...lesson2Registry,
+  ...lesson3Registry,
+  ...lesson4Registry,
+  ...lesson5Registry,
 };
 
 export default function LessonLayout({ lesson }: { lesson: Lesson }) {
