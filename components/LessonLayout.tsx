@@ -11,6 +11,9 @@ import { lesson2Registry } from "./interactives/lesson2";
 import { lesson3Registry } from "./interactives/lesson3";
 import { lesson4Registry } from "./interactives/lesson4";
 import { lesson5Registry } from "./interactives/lesson5";
+import { lesson6Registry } from "./interactives/lesson6";
+import { lesson7Registry } from "./interactives/lesson7";
+import { lesson8Registry } from "./interactives/lesson8";
 
 const interactiveRegistry: Record<string, React.ComponentType> = {
   ...lesson1Registry,
@@ -18,6 +21,9 @@ const interactiveRegistry: Record<string, React.ComponentType> = {
   ...lesson3Registry,
   ...lesson4Registry,
   ...lesson5Registry,
+  ...lesson6Registry,
+  ...lesson7Registry,
+  ...lesson8Registry,
 };
 
 export default function LessonLayout({ lesson }: { lesson: Lesson }) {

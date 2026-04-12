@@ -6,6 +6,9 @@ import lesson2 from "@/content/lessons/lesson2";
 import lesson3 from "@/content/lessons/lesson3";
 import lesson4 from "@/content/lessons/lesson4";
 import lesson5 from "@/content/lessons/lesson5";
+import lesson6 from "@/content/lessons/lesson6";
+import lesson7 from "@/content/lessons/lesson7";
+import lesson8 from "@/content/lessons/lesson8";
 import LessonLayout from "@/components/LessonLayout";
 
 const BASE_URL = "https://ai-engineering-three.vercel.app";
@@ -16,6 +19,9 @@ const lessons = {
   "regularization": lesson3,
   "kernel-svm": lesson4,
   "perceptron-mlp": lesson5,
+  "backpropagation": lesson6,
+  "cnn": lesson7,
+  "rnn-lstm": lesson8,
 } as const;
 
 type Params = { slug: string };

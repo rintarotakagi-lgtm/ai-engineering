@@ -43,21 +43,21 @@ export const curriculum: CurriculumItem[] = [
     title: "誤差逆伝播法",
     subtitle: "連鎖律、計算グラフ",
     phase: "Phase 2: ニューラルネットワーク",
-    available: false,
+    available: true,
   },
   {
     slug: "cnn",
     title: "CNN",
     subtitle: "畳み込み、プーリング、画像認識",
     phase: "Phase 2: ニューラルネットワーク",
-    available: false,
+    available: true,
   },
   {
     slug: "rnn-lstm",
     title: "RNN・LSTM",
     subtitle: "系列データ、勾配消失問題",
     phase: "Phase 2: ニューラルネットワーク",
-    available: false,
+    available: true,
   },
   // Phase 3: Transformerへの道
   {
