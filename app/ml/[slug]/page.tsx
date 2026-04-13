@@ -63,7 +63,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${title} — 機械学習の教科書`,
       description,
-      url: `${BASE_URL}/lessons/${slug}`,
+      url: `${BASE_URL}/ml/${slug}`,
       type: "article",
     },
     twitter: {
@@ -72,12 +72,12 @@ export async function generateMetadata({
       description,
     },
     alternates: {
-      canonical: `${BASE_URL}/lessons/${slug}`,
+      canonical: `${BASE_URL}/ml/${slug}`,
     },
   };
 }
 
-export default async function LessonPage({
+export default async function MLLessonPage({
   params,
 }: {
   params: Promise<Params>;
@@ -89,5 +89,5 @@ export default async function LessonPage({
     notFound();
   }
 
-  return <LessonLayout lesson={lesson} />;
+  return <LessonLayout lesson={lesson} courseBase="/ml" />;
 }

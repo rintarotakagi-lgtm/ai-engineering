@@ -15,40 +15,36 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "機械学習の教科書 — かんたん大学数学で理解する",
-    template: "%s — 機械学習の教科書",
+    default: "AI活用のための実践レッスン",
+    template: "%s — AI活用のための実践レッスン",
   },
   description:
-    "線形回帰からLLMまで、インタラクティブなデモ付きで機械学習の理論を体系的に学べる無料サイト。全15レッスン、大学レベルの数学で丁寧に解説。",
+    "機械学習の理論からGit/GitHubの使い方まで、インタラクティブなデモ付きで学べる無料サイト。株式会社Uribo運営。",
   keywords: [
     "機械学習",
     "深層学習",
-    "ディープラーニング",
-    "線形回帰",
-    "ニューラルネットワーク",
-    "Transformer",
-    "LLM",
+    "Git",
+    "GitHub",
     "AI",
-    "数学",
     "教科書",
     "無料",
     "インタラクティブ",
   ],
   authors: [{ name: "株式会社Uribo" }],
   openGraph: {
-    title: "機械学習の教科書 — かんたん大学数学で理解する",
+    title: "AI活用のための実践レッスン",
     description:
-      "線形回帰からLLMまで、インタラクティブなデモ付きで機械学習の理論を体系的に学べる無料サイト。",
+      "機械学習の理論からGit/GitHubまで、インタラクティブなデモ付きで学べる無料サイト。",
     url: BASE_URL,
-    siteName: "機械学習の教科書",
+    siteName: "AI活用のための実践レッスン",
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "機械学習の教科書 — かんたん大学数学で理解する",
+    title: "AI活用のための実践レッスン",
     description:
-      "線形回帰からLLMまで、インタラクティブなデモ付き。全15レッスン無料。",
+      "機械学習の理論からGit/GitHubまで、インタラクティブなデモ付き。すべて無料。",
   },
   alternates: {
     canonical: BASE_URL,

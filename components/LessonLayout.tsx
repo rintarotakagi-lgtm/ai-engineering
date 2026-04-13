@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { Lesson } from "@/lib/types";
-import { curriculum } from "@/content/curriculum";
+import type { Lesson, CurriculumItem } from "@/lib/types";
+import { curriculum as mlCurriculum } from "@/content/curriculum";
 import RichText from "./RichText";
 import Quiz from "./Quiz";
 import { interactiveRegistry as lesson1Registry } from "./interactives/lesson1";
@@ -21,6 +21,10 @@ import { lesson12Registry } from "./interactives/lesson12";
 import { lesson13Registry } from "./interactives/lesson13";
 import { lesson14Registry } from "./interactives/lesson14";
 import { lesson15Registry } from "./interactives/lesson15";
+import { git1Registry } from "./interactives/git1";
+import { git2Registry } from "./interactives/git2";
+import { git3Registry } from "./interactives/git3";
+import { git4Registry } from "./interactives/git4";
 
 const interactiveRegistry: Record<string, React.ComponentType> = {
   ...lesson1Registry,
@@ -38,20 +42,25 @@ const interactiveRegistry: Record<string, React.ComponentType> = {
   ...lesson13Registry,
   ...lesson14Registry,
   ...lesson15Registry,
+  ...git1Registry,
+  ...git2Registry,
+  ...git3Registry,
+  ...git4Registry,
 };
 
-export default function LessonLayout({ lesson }: { lesson: Lesson }) {
+export default function LessonLayout({ lesson, courseBase = "/ml", curriculum }: { lesson: Lesson; courseBase?: string; curriculum?: CurriculumItem[] }) {
+  const cur = curriculum ?? mlCurriculum;
   const [currentSection, setCurrentSection] = useState(0);
   const section = lesson.sections[currentSection];
   const progress = ((currentSection + 1) / lesson.sections.length) * 100;
 
-  const currentIndex = curriculum.findIndex((c) => c.slug === lesson.slug);
+  const currentIndex = cur.findIndex((c) => c.slug === lesson.slug);
   const lessonNumber = currentIndex + 1;
-  const prevLesson = curriculum
+  const prevLesson = cur
     .slice(0, currentIndex)
     .reverse()
     .find((c) => c.available);
-  const nextLesson = curriculum.slice(currentIndex + 1).find((c) => c.available);
+  const nextLesson = cur.slice(currentIndex + 1).find((c) => c.available);
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
@@ -165,7 +174,7 @@ export default function LessonLayout({ lesson }: { lesson: Lesson }) {
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           {prevLesson && (
             <Link
-              href={`/lessons/${prevLesson.slug}`}
+              href={`${courseBase}/${prevLesson.slug}`}
               className="group flex items-center gap-3 rounded-xl border border-zinc-200 p-4 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:hover:border-zinc-700"
             >
               <svg
@@ -191,7 +200,7 @@ export default function LessonLayout({ lesson }: { lesson: Lesson }) {
           )}
           {nextLesson && (
             <Link
-              href={`/lessons/${nextLesson.slug}`}
+              href={`${courseBase}/${nextLesson.slug}`}
               className="group flex items-center justify-end gap-3 rounded-xl border border-zinc-200 p-4 text-right transition-all hover:border-zinc-300 hover:shadow-md sm:col-start-2 dark:border-zinc-800 dark:hover:border-zinc-700"
             >
               <div>
