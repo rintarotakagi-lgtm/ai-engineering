@@ -12,6 +12,10 @@ import lesson8 from "@/content/lessons/lesson8";
 import lesson9 from "@/content/lessons/lesson9";
 import lesson10 from "@/content/lessons/lesson10";
 import lesson11 from "@/content/lessons/lesson11";
+import lesson12 from "@/content/lessons/lesson12";
+import lesson13 from "@/content/lessons/lesson13";
+import lesson14 from "@/content/lessons/lesson14";
+import lesson15 from "@/content/lessons/lesson15";
 import LessonLayout from "@/components/LessonLayout";
 
 const BASE_URL = "https://ai-engineering-three.vercel.app";
@@ -28,6 +32,10 @@ const lessons = {
   "attention": lesson9,
   "transformer": lesson10,
   "bert-vs-gpt": lesson11,
+  "tokenization-embedding": lesson12,
+  "scaling-laws": lesson13,
+  "rlhf": lesson14,
+  "inference": lesson15,
 } as const;
 
 type Params = { slug: string };
