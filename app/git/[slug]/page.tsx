@@ -5,6 +5,10 @@ import gitIntro from "@/content/git-lessons/git-intro";
 import gitConcepts from "@/content/git-lessons/git-concepts";
 import githubStart from "@/content/git-lessons/github-start";
 import basicWorkflow from "@/content/git-lessons/basic-workflow";
+import branchingMerging from "@/content/git-lessons/lesson5";
+import pullRequests from "@/content/git-lessons/lesson6";
+import teamWorkflow from "@/content/git-lessons/lesson7";
+import troubleshooting from "@/content/git-lessons/lesson8";
 import LessonLayout from "@/components/LessonLayout";
 
 const BASE_URL = "https://ai-engineering-three.vercel.app";
@@ -14,6 +18,10 @@ const lessons = {
   "git-concepts": gitConcepts,
   "github-start": githubStart,
   "basic-workflow": basicWorkflow,
+  "branching-merging": branchingMerging,
+  "pull-requests": pullRequests,
+  "team-workflow": teamWorkflow,
+  "troubleshooting": troubleshooting,
 } as const;
 
 type Params = { slug: string };

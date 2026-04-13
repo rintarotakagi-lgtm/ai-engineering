@@ -25,6 +25,10 @@ import { git1Registry } from "./interactives/git1";
 import { git2Registry } from "./interactives/git2";
 import { git3Registry } from "./interactives/git3";
 import { git4Registry } from "./interactives/git4";
+import { git5Registry } from "./interactives/git5";
+import { git6Registry } from "./interactives/git6";
+import { git7Registry } from "./interactives/git7";
+import { git8Registry } from "./interactives/git8";
 
 const interactiveRegistry: Record<string, React.ComponentType> = {
   ...lesson1Registry,
@@ -46,6 +50,10 @@ const interactiveRegistry: Record<string, React.ComponentType> = {
   ...git2Registry,
   ...git3Registry,
   ...git4Registry,
+  ...git5Registry,
+  ...git6Registry,
+  ...git7Registry,
+  ...git8Registry,
 };
 
 export default function LessonLayout({ lesson, courseBase = "/ml", curriculum }: { lesson: Lesson; courseBase?: string; curriculum?: CurriculumItem[] }) {
