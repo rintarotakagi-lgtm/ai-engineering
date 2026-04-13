@@ -156,28 +156,29 @@ export default function LessonLayout({ lesson, courseBase = "/ml", curriculum }:
           }
         })}
 
-        {/* Section navigation — hide on last section */}
-        {currentSection < lesson.sections.length - 1 && (
-          <div className="mt-12 flex justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800">
+        {/* Section navigation */}
+        <div className="mt-12 flex justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800">
+          {currentSection > 0 && (
             <button
               onClick={() => setCurrentSection((s) => Math.max(0, s - 1))}
-              disabled={currentSection === 0}
-              className="rounded-xl border border-zinc-200 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-zinc-50 disabled:opacity-30 dark:border-zinc-700 dark:hover:bg-zinc-800"
+              className="rounded-xl border border-zinc-200 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
             >
               ← 前のセクション
             </button>
+          )}
+          {currentSection < lesson.sections.length - 1 && (
             <button
               onClick={() =>
                 setCurrentSection((s) =>
                   Math.min(lesson.sections.length - 1, s + 1)
                 )
               }
-              className="rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+              className="ml-auto rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
             >
               次のセクション →
             </button>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Lesson navigation — show on last section, or always below section nav */}
         <div className={`grid gap-3 sm:grid-cols-2 ${currentSection === lesson.sections.length - 1 ? "mt-12 border-t border-zinc-200 pt-6 dark:border-zinc-800" : "mt-8"}`}>
