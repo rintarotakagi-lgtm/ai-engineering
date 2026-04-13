@@ -156,16 +156,16 @@ export default function LessonLayout({ lesson, courseBase = "/ml", curriculum }:
           }
         })}
 
-        {/* Section navigation */}
-        <div className="mt-12 flex justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800">
-          <button
-            onClick={() => setCurrentSection((s) => Math.max(0, s - 1))}
-            disabled={currentSection === 0}
-            className="rounded-xl border border-zinc-200 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-zinc-50 disabled:opacity-30 dark:border-zinc-700 dark:hover:bg-zinc-800"
-          >
-            ← 前のセクション
-          </button>
-          {currentSection < lesson.sections.length - 1 && (
+        {/* Section navigation — hide on last section */}
+        {currentSection < lesson.sections.length - 1 && (
+          <div className="mt-12 flex justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800">
+            <button
+              onClick={() => setCurrentSection((s) => Math.max(0, s - 1))}
+              disabled={currentSection === 0}
+              className="rounded-xl border border-zinc-200 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-zinc-50 disabled:opacity-30 dark:border-zinc-700 dark:hover:bg-zinc-800"
+            >
+              ← 前のセクション
+            </button>
             <button
               onClick={() =>
                 setCurrentSection((s) =>
@@ -176,11 +176,11 @@ export default function LessonLayout({ lesson, courseBase = "/ml", curriculum }:
             >
               次のセクション →
             </button>
-          )}
-        </div>
+          </div>
+        )}
 
-        {/* Lesson navigation */}
-        <div className="mt-8 grid gap-3 sm:grid-cols-2">
+        {/* Lesson navigation — show on last section, or always below section nav */}
+        <div className={`grid gap-3 sm:grid-cols-2 ${currentSection === lesson.sections.length - 1 ? "mt-12 border-t border-zinc-200 pt-6 dark:border-zinc-800" : "mt-8"}`}>
           {prevLesson && (
             <Link
               href={`${courseBase}/${prevLesson.slug}`}
