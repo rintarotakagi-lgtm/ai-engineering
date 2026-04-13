@@ -165,17 +165,18 @@ export default function LessonLayout({ lesson, courseBase = "/ml", curriculum }:
           >
             ← 前のセクション
           </button>
-          <button
-            onClick={() =>
-              setCurrentSection((s) =>
-                Math.min(lesson.sections.length - 1, s + 1)
-              )
-            }
-            disabled={currentSection === lesson.sections.length - 1}
-            className="rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:opacity-30 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
-          >
-            次のセクション →
-          </button>
+          {currentSection < lesson.sections.length - 1 && (
+            <button
+              onClick={() =>
+                setCurrentSection((s) =>
+                  Math.min(lesson.sections.length - 1, s + 1)
+                )
+              }
+              className="rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+            >
+              次のセクション →
+            </button>
+          )}
         </div>
 
         {/* Lesson navigation */}
