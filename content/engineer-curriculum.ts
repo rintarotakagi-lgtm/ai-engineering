@@ -1,0 +1,141 @@
+import type { CurriculumItem } from "@/lib/types";
+
+export const engineerCurriculum: CurriculumItem[] = [
+  // Module 1: システムの基礎概念
+  {
+    slug: "web-basics",
+    title: "クライアントとサーバー",
+    subtitle: "Webシステムのリクエスト/レスポンスの流れ",
+    phase: "Module 1: システムの基礎概念",
+    available: true,
+  },
+  {
+    slug: "http-rest",
+    title: "HTTP・REST APIとは",
+    subtitle: "GET/POST/PUT/DELETE — curlでAPIを叩く",
+    phase: "Module 1: システムの基礎概念",
+    available: true,
+  },
+  {
+    slug: "databases",
+    title: "データベース（RDB vs NoSQL）",
+    subtitle: "テーブル構造と使い分けの判断基準",
+    phase: "Module 1: システムの基礎概念",
+    available: true,
+  },
+  {
+    slug: "frontend-backend",
+    title: "フロントエンドとバックエンドの分離",
+    subtitle: "SPA / SSR / SSG — どこで何が動くか",
+    phase: "Module 1: システムの基礎概念",
+    available: true,
+  },
+  {
+    slug: "cloud-basics",
+    title: "クラウドで何ができるか",
+    subtitle: "AWS/GCPの主要サービス10選とコスト感",
+    phase: "Module 1: システムの基礎概念",
+    available: true,
+  },
+  // Module 2: Python基礎
+  {
+    slug: "python-setup",
+    title: "環境構築（uv + Python 3.12）",
+    subtitle: "uvでプロジェクト作成・依存追加・スクリプト実行",
+    phase: "Module 2: Python基礎",
+    available: true,
+  },
+  {
+    slug: "python-types",
+    title: "変数・データ型・データ構造",
+    subtitle: "str / int / list / dict / set を使い分ける",
+    phase: "Module 2: Python基礎",
+    available: true,
+  },
+  {
+    slug: "python-control",
+    title: "条件分岐・ループ",
+    subtitle: "if / for / while で簡単なロジックを書く",
+    phase: "Module 2: Python基礎",
+    available: true,
+  },
+  {
+    slug: "python-functions",
+    title: "関数・モジュール",
+    subtitle: "関数定義・import・自作モジュール分割",
+    phase: "Module 2: Python基礎",
+    available: true,
+  },
+  {
+    slug: "python-libraries",
+    title: "ライブラリの使い方（requests, pandas）",
+    subtitle: "外部ライブラリ追加・APIコール・CSV読み書き",
+    phase: "Module 2: Python基礎",
+    available: true,
+  },
+  {
+    slug: "python-errors",
+    title: "エラーハンドリング・デバッグ",
+    subtitle: "try/except と print/logging で原因を切り分ける",
+    phase: "Module 2: Python基礎",
+    available: true,
+  },
+  // Module 3: Git/GitHub
+  {
+    slug: "git-concepts-eng",
+    title: "Gitの概念（commit, branch, merge）",
+    subtitle: "変更履歴がなぜ必要か・基本コマンド",
+    phase: "Module 3: Git/GitHub",
+    available: true,
+  },
+  {
+    slug: "github-pr",
+    title: "GitHub・PR・レビューフロー",
+    subtitle: "リポジトリ作成・push・PR作成・マージ",
+    phase: "Module 3: Git/GitHub",
+    available: true,
+  },
+  // Module 4: LLM API・エージェント
+  {
+    slug: "llm-api-basics",
+    title: "LLM API呼び出しの基本",
+    subtitle: "PythonからClaude APIを叩いてレスポンスを受け取る",
+    phase: "Module 4: LLM API・エージェント",
+    available: true,
+  },
+  {
+    slug: "tokens-context",
+    title: "トークン・コンテキスト・モデル選択",
+    subtitle: "コスト感とモデルの使い分け判断",
+    phase: "Module 4: LLM API・エージェント",
+    available: true,
+  },
+  {
+    slug: "prompt-engineering",
+    title: "プロンプトエンジニアリングの最低限",
+    subtitle: "system/user/assistant の役割、few-shot、構造化出力",
+    phase: "Module 4: LLM API・エージェント",
+    available: true,
+  },
+  {
+    slug: "tool-use",
+    title: "Tool use（関数呼び出し）の基本",
+    subtitle: "LLMに関数を渡してツール経由で動作させる",
+    phase: "Module 4: LLM API・エージェント",
+    available: true,
+  },
+  {
+    slug: "agents-basics",
+    title: "エージェントとは何か",
+    subtitle: "ループ・記憶・計画の概念と簡単な自律エージェント",
+    phase: "Module 4: LLM API・エージェント",
+    available: true,
+  },
+  {
+    slug: "mcp-basics",
+    title: "MCPの仕組み",
+    subtitle: "MCPサーバーが何をしているか・公式MCPを接続する",
+    phase: "Module 4: LLM API・エージェント",
+    available: true,
+  },
+];

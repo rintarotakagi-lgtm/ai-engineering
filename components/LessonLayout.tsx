@@ -29,6 +29,36 @@ import { git5Registry } from "./interactives/git5";
 import { git6Registry } from "./interactives/git6";
 import { git7Registry } from "./interactives/git7";
 import { git8Registry } from "./interactives/git8";
+import { agent1Registry } from "./interactives/agent1";
+import { agent2Registry } from "./interactives/agent2";
+import { agent3Registry } from "./interactives/agent3";
+import { agent4Registry } from "./interactives/agent4";
+import { agent5Registry } from "./interactives/agent5";
+import { rag1Registry } from "./interactives/rag1";
+import { rag2Registry } from "./interactives/rag2";
+import { rag3Registry } from "./interactives/rag3";
+import { rag4Registry } from "./interactives/rag4";
+import { rag5Registry } from "./interactives/rag5";
+import { rag6Registry } from "./interactives/rag6";
+import { eng1Registry } from "./interactives/eng1";
+import { eng2Registry } from "./interactives/eng2";
+import { eng3Registry } from "./interactives/eng3";
+import { eng4Registry } from "./interactives/eng4";
+import { eng5Registry } from "./interactives/eng5";
+import { eng6Registry } from "./interactives/eng6";
+import { eng7Registry } from "./interactives/eng7";
+import { eng8Registry } from "./interactives/eng8";
+import { eng9Registry } from "./interactives/eng9";
+import { eng10Registry } from "./interactives/eng10";
+import { eng11Registry } from "./interactives/eng11";
+import { eng12Registry } from "./interactives/eng12";
+import { eng13Registry } from "./interactives/eng13";
+import { eng14Registry } from "./interactives/eng14";
+import { eng15Registry } from "./interactives/eng15";
+import { eng16Registry } from "./interactives/eng16";
+import { eng17Registry } from "./interactives/eng17";
+import { eng18Registry } from "./interactives/eng18";
+import { eng19Registry } from "./interactives/eng19";
 
 const interactiveRegistry: Record<string, React.ComponentType> = {
   ...lesson1Registry,
@@ -54,6 +84,36 @@ const interactiveRegistry: Record<string, React.ComponentType> = {
   ...git6Registry,
   ...git7Registry,
   ...git8Registry,
+  ...agent1Registry,
+  ...agent2Registry,
+  ...agent3Registry,
+  ...agent4Registry,
+  ...agent5Registry,
+  ...rag1Registry,
+  ...rag2Registry,
+  ...rag3Registry,
+  ...rag4Registry,
+  ...rag5Registry,
+  ...rag6Registry,
+  ...eng1Registry,
+  ...eng2Registry,
+  ...eng3Registry,
+  ...eng4Registry,
+  ...eng5Registry,
+  ...eng6Registry,
+  ...eng7Registry,
+  ...eng8Registry,
+  ...eng9Registry,
+  ...eng10Registry,
+  ...eng11Registry,
+  ...eng12Registry,
+  ...eng13Registry,
+  ...eng14Registry,
+  ...eng15Registry,
+  ...eng16Registry,
+  ...eng17Registry,
+  ...eng18Registry,
+  ...eng19Registry,
 };
 
 export default function LessonLayout({ lesson, courseBase = "/ml", curriculum }: { lesson: Lesson; courseBase?: string; curriculum?: CurriculumItem[] }) {

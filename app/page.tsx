@@ -19,6 +19,15 @@ const courses = [
     lessonCount: 8,
     color: "sky",
   },
+  {
+    slug: "engineer",
+    title: "エンジニア入門",
+    subtitle: "ディレクター・経営者のためのエンジニアリング基礎",
+    description:
+      "Webシステム・Python・Git・LLM APIまで、全19レッスン。「コードを書ける」より「読める・判断できる・指示できる」を目指す。",
+    lessonCount: 19,
+    color: "emerald",
+  },
 ];
 
 export default function Home() {
