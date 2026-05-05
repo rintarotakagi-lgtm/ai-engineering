@@ -8,7 +8,8 @@ export type Quiz = {
 export type Block =
   | { type: "text"; content: string }
   | { type: "interactive"; id: string }
-  | { type: "quiz"; data: Quiz };
+  | { type: "quiz"; data: Quiz }
+  | { type: "code-runner"; initialCode: string };
 
 export type Section = {
   id: string;
