@@ -266,6 +266,71 @@ for i in range(10):
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "*args で可変長合計",
+            description: "任意の数の引数を受け取り、その合計を返す関数 total(*args) を定義してください。",
+            starterCode: `def total(???):
+    return sum(args)
+
+print(total(1, 2, 3))
+print(total(10, 20))
+print(total(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))`,
+            hint: "*args でタプルとして受け取り、sum() で合計できる",
+            expectedOutput: "6\n30\n55\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "クロージャでカウンターを作ろう",
+            description: "呼ぶたびにカウントが1増える関数を返す make_counter() を定義してください。",
+            starterCode: `def make_counter():
+    count = 0
+    def counter():
+        nonlocal count
+        count ???= 1
+        return count
+    return counter
+
+c1 = make_counter()
+c2 = make_counter()
+
+print(c1())
+print(c1())
+print(c1())
+print(c2())`,
+            hint: "nonlocal で外側の変数を参照できる。count += 1 で加算",
+            expectedOutput: "1\n2\n3\n1\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "lambda でカスタムソート",
+            description: "辞書のリスト [{\"name\":\"Alice\",\"age\":30},{\"name\":\"Bob\",\"age\":25},{\"name\":\"Charlie\",\"age\":35}] を年齢の昇順にソートして出力してください。",
+            starterCode: `people = [
+    {"name": "Alice", "age": 30},
+    {"name": "Bob", "age": 25},
+    {"name": "Charlie", "age": 35},
+]
+
+# lambda を使って age でソート
+sorted_people = sorted(people, key=???)
+
+for p in sorted_people:
+    print(f"{p['name']}: {p['age']}")`,
+            hint: "key=lambda p: p[\"age\"] とすると年齢を基準にソートできる",
+            expectedOutput: "Bob: 25\nAlice: 30\nCharlie: 35\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

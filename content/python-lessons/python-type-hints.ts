@@ -296,6 +296,75 @@ print(result2)`,
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "型ヒントを付けてみよう",
+            description: "文字列のリストを受け取り、最も長い文字列を返す関数 longest(words: list[str]) -> str を型ヒント付きで定義してください。",
+            starterCode: `def longest(words: list[???]) -> ???:
+    result = words[0]
+    for word in words[1:]:
+        if len(word) > len(result):
+            result = word
+    return result
+
+print(longest(["apple", "banana", "kiwi", "strawberry"]))
+print(longest(["a", "bb", "ccc"]))`,
+            hint: "list[str] でstr のリスト型を表す。戻り値は str",
+            expectedOutput: "strawberry\nccc\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "Optional を使って None を表現しよう",
+            description: "リストから指定した値のインデックスを返す find(items, target) を定義してください。見つからない場合は None を返すこと。戻り値の型は Optional[int] を使うこと。",
+            starterCode: `from typing import Optional
+
+def find(items: list, target) -> Optional[???]:
+    for i, item in enumerate(items):
+        if item == target:
+            return i
+    return ???
+
+print(find([10, 20, 30, 40], 30))
+print(find([10, 20, 30, 40], 99))`,
+            hint: "見つかった場合はインデックス i を返す。見つからない場合は None を返す",
+            expectedOutput: "2\nNone\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "TypedDict で辞書の型を定義しよう",
+            description: "名前(str)とスコア(int)を持つ TypedDict 型 Student を定義し、生徒リストの平均スコアを計算する関数 average_score(students) を書いてください。",
+            starterCode: `from typing import TypedDict
+
+class Student(TypedDict):
+    name: ???
+    score: ???
+
+def average_score(students: list[Student]) -> float:
+    total = sum(s[???] for s in students)
+    return total / len(students)
+
+students: list[Student] = [
+    {"name": "Alice", "score": 85},
+    {"name": "Bob", "score": 92},
+    {"name": "Charlie", "score": 78},
+]
+
+print(f"{average_score(students):.1f}")`,
+            hint: "TypedDict のフィールドは name: str, score: int のように定義する",
+            expectedOutput: "85.0\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

@@ -7,6 +7,7 @@ import { curriculum as mlCurriculum } from "@/content/curriculum";
 import RichText from "./RichText";
 import Quiz from "./Quiz";
 import PythonRunner from "./PythonRunner";
+import ChallengeRunner from "./ChallengeRunner";
 import { interactiveRegistry as lesson1Registry } from "./interactives/lesson1";
 import { lesson2Registry } from "./interactives/lesson2";
 import { lesson3Registry } from "./interactives/lesson3";
@@ -214,6 +215,8 @@ export default function LessonLayout({ lesson, courseBase = "/ml", curriculum }:
               return <Quiz key={i} data={block.data} />;
             case "code-runner":
               return <PythonRunner key={i} initialCode={block.initialCode} />;
+            case "challenge":
+              return <ChallengeRunner key={i} data={block.data} />;
             default:
               return null;
           }

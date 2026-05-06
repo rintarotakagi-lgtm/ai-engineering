@@ -235,6 +235,67 @@ print(squares)`,
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "最大値を自力で探そう",
+            description: "max() を使わずに、リスト [3, 1, 4, 1, 5, 9, 2, 6] の最大値を求めてください。",
+            starterCode: `numbers = [3, 1, 4, 1, 5, 9, 2, 6]
+
+# 最初の要素を暫定最大値にする
+current_max = numbers[0]
+
+# リストを先頭から順にチェック
+for n in numbers:
+    if ???:
+        current_max = n
+
+print(current_max)`,
+            hint: "n > current_max のとき current_max を更新する",
+            expectedOutput: "9\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "単語の出現回数を数えよう",
+            description: "リスト [\"apple\", \"banana\", \"apple\", \"cherry\", \"banana\", \"apple\"] の各要素の出現回数を辞書で集計して出力してください。",
+            starterCode: `words = ["apple", "banana", "apple", "cherry", "banana", "apple"]
+count = {}
+
+for word in words:
+    if word in count:
+        count[word] ???= 1
+    else:
+        count[word] = ???
+
+for word, n in count.items():
+    print(f"{word}: {n}")`,
+            hint: "すでにキーがある場合は +1、ない場合は 1 で初期化する",
+            expectedOutput: "apple: 3\nbanana: 2\ncherry: 1\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "内包表記で変換しよう",
+            description: "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] から偶数だけを取り出し、それぞれを2乗したリストを内包表記で作ってください。",
+            starterCode: `numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# 偶数を2乗したリスト（内包表記で1行）
+result = [??? for n in numbers if ???]
+
+print(result)`,
+            hint: "n**2 for n in numbers if n % 2 == 0 という形になる",
+            expectedOutput: "[4, 16, 36, 64, 100]\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

@@ -272,6 +272,75 @@ for fmt in formats:
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "defaultdict でグループ集計しよう",
+            description: "商品リストを種類別に集計してください。defaultdict(list) を使って、種類をキー、商品名のリストを値にしてください。",
+            starterCode: `from collections import defaultdict
+
+products = [
+    ("果物", "りんご"),
+    ("野菜", "にんじん"),
+    ("果物", "バナナ"),
+    ("野菜", "ほうれん草"),
+    ("果物", "みかん"),
+]
+
+grouped = defaultdict(???)
+for category, name in products:
+    grouped[???].append(name)
+
+for category, items in sorted(grouped.items()):
+    print(f"{category}: {items}")`,
+            hint: "defaultdict(list) で存在しないキーに自動でリストを作成。grouped[category].append(name) で追加",
+            expectedOutput: "果物: ['りんご', 'バナナ', 'みかん']\n野菜: ['にんじん', 'ほうれん草']\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "datetime で日数を計算しよう",
+            description: "2024年1月1日から2024年12月31日まで何日あるか計算して出力してください。また「今から100日後」の日付も出力してください（today = datetime(2024, 5, 1) として計算）。",
+            starterCode: `from datetime import datetime, timedelta
+
+start = datetime(2024, 1, 1)
+end = datetime(2024, 12, 31)
+
+diff = ??? - start
+print(f"2024年の日数差: {diff.???}日")
+
+today = datetime(2024, 5, 1)
+future = today + timedelta(days=???)
+print(f"100日後: {future.strftime('%Y年%m月%d日')}")`,
+            hint: "datetime 同士の引き算で timedelta が得られる。timedelta.days で日数を取得",
+            expectedOutput: "2024年の日数差: 365日\n100日後: 2024年08月09日\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "Counter で最頻値を求めよう",
+            description: "テスト結果のリスト [85, 92, 78, 85, 95, 92, 85, 78, 92, 85] の最頻値（最も多く出現するスコア）と出現回数を出力してください。",
+            starterCode: `from collections import Counter
+
+scores = [85, 92, 78, 85, 95, 92, 85, 78, 92, 85]
+
+counter = Counter(???)
+most_common_score, count = counter.most_common(???)[0]
+
+print(f"最頻値: {most_common_score}点")
+print(f"出現回数: {count}回")`,
+            hint: "Counter(リスト) で各要素の出現回数を集計。most_common(1) で最頻値1件を取得",
+            expectedOutput: "最頻値: 85点\n出現回数: 4回\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

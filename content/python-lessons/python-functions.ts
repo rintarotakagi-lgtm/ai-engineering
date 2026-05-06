@@ -243,6 +243,67 @@ print(summarize(["apple", "banana", "fig"]))`,
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "階乗を計算しよう",
+            description: "整数 n を受け取り、n! (n の階乗) を返す関数 factorial(n) を定義してください。factorial(5) = 120 になること。",
+            starterCode: `def factorial(n):
+    result = 1
+    for i in range(1, ???):
+        result ???= i
+    return result
+
+print(factorial(5))
+print(factorial(0))
+print(factorial(10))`,
+            hint: "range(1, n+1) で 1 から n まで繰り返す。result *= i で掛け算していく",
+            expectedOutput: "120\n1\n3628800\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "統計関数を作ろう",
+            description: "数値のリストを受け取り、(最大値, 最小値, 平均値) のタプルを返す関数 stats(numbers) を定義してください。",
+            starterCode: `def stats(numbers):
+    maximum = ???
+    minimum = ???
+    average = ???
+    return maximum, minimum, average
+
+high, low, avg = stats([3, 1, 4, 1, 5, 9, 2, 6])
+print(f"最大: {high}, 最小: {low}, 平均: {avg:.2f}")`,
+            hint: "max(), min(), sum()/len() を使えば1行ずつ書ける",
+            expectedOutput: "最大: 9, 最小: 1, 平均: 3.88\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "デフォルト引数を使おう",
+            description: "名前と言語（デフォルト=\"ja\"）を受け取り、日本語なら \"こんにちは、{name}さん\"、英語（\"en\"）なら \"Hello, {name}\" と返す関数 greet(name, lang=\"ja\") を定義してください。",
+            starterCode: `def greet(name, lang=???):
+    if lang == "ja":
+        return f"こんにちは、{name}さん"
+    elif lang == ???:
+        return f"Hello, {name}"
+    else:
+        return f"Hi, {name}"
+
+print(greet("Alice"))
+print(greet("Bob", "en"))
+print(greet("Charlie", "fr"))`,
+            hint: "デフォルト引数は def greet(name, lang=\"ja\"): のように定義する",
+            expectedOutput: "こんにちは、Aliceさん\nHello, Bob\nHi, Charlie\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

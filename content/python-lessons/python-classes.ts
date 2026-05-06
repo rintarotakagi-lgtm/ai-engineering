@@ -275,6 +275,101 @@ except ValueError as e:
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "銀行口座クラスを作ろう",
+            description: "BankAccount クラスを定義してください。__init__(self, owner, balance=0)、deposit(amount)（残高を増やす）、withdraw(amount)（残高を減らす。残高不足なら \"残高不足\" を出力）、show()（\"owner: balance円\" を出力）メソッドを実装すること。",
+            starterCode: `class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = ???
+
+    def deposit(self, amount):
+        self.balance ???= amount
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("残高不足")
+        else:
+            self.balance -= amount
+
+    def show(self):
+        print(f"{self.owner}: {self.balance}円")
+
+acc = BankAccount("Alice", 1000)
+acc.deposit(500)
+acc.show()
+acc.withdraw(200)
+acc.show()
+acc.withdraw(2000)`,
+            hint: "self.balance = balance で初期化。deposit は += で加算",
+            expectedOutput: "Alice: 1500円\nAlice: 1300円\n残高不足\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "円クラスを作ろう",
+            description: "半径を受け取る Circle クラスを定義してください。area()（面積）と circumference()（円周）を返すメソッドを実装してください。π は 3.14159 を使用。",
+            starterCode: `class Circle:
+    PI = 3.14159
+
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return ???
+
+    def circumference(self):
+        return ???
+
+c = Circle(5)
+print(f"面積: {c.area():.2f}")
+print(f"円周: {c.circumference():.2f}")`,
+            hint: "面積は PI * r², 円周は 2 * PI * r",
+            expectedOutput: "面積: 78.54\n円周: 31.42\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "スタックを実装しよう",
+            description: "リストを使ったスタック（LIFO）クラス Stack を実装してください。push(item)、pop()（最後の要素を取り出す）、peek()（最後の要素を見るだけ）、is_empty()（空かどうか）メソッドを実装すること。",
+            starterCode: `class Stack:
+    def __init__(self):
+        self._data = []
+
+    def push(self, item):
+        self._data.???( item)
+
+    def pop(self):
+        return self._data.???()
+
+    def peek(self):
+        return self._data[???]
+
+    def is_empty(self):
+        return len(self._data) == ???
+
+s = Stack()
+s.push(1)
+s.push(2)
+s.push(3)
+print(s.peek())
+print(s.pop())
+print(s.pop())
+print(s.is_empty())`,
+            hint: "append() で追加、pop() で最後を取り出す。peek は [-1] で最後の要素にアクセス",
+            expectedOutput: "3\n3\n2\nFalse\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

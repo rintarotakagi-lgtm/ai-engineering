@@ -261,6 +261,89 @@ for p in in_stock:
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "テキストを行ごとに処理しよう",
+            description: "複数行の文字列を行ごとに分割し、行番号付きで出力してください。空行はスキップすること。",
+            starterCode: `text = """Python is great
+It is easy to learn
+
+It is powerful
+Used in AI and data science"""
+
+lines = text.strip().split(???)
+line_num = 1
+for line in lines:
+    if line.strip() == "":
+        continue
+    print(f"{line_num}: {line}")
+    line_num += 1`,
+            hint: "split(\"\\n\") で改行ごとに分割できる",
+            expectedOutput: "1: Python is great\n2: It is easy to learn\n3: It is powerful\n4: Used in AI and data science\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "CSVデータを解析しよう",
+            description: "CSV形式の文字列を解析して、各行の名前と点数を出力してください。点数の合計も出力すること。",
+            starterCode: `csv_data = """name,score
+Alice,85
+Bob,92
+Charlie,78
+Diana,95"""
+
+lines = csv_data.strip().split("\\n")
+header = lines[0]
+rows = lines[1:]
+
+total = 0
+for row in rows:
+    parts = row.split(???)
+    name = parts[0]
+    score = int(parts[???])
+    total += score
+    print(f"{name}: {score}点")
+
+print(f"合計: {total}点")`,
+            hint: "split(\",\") でカンマ区切りに分割。score は int() で数値に変換する",
+            expectedOutput: "Alice: 85点\nBob: 92点\nCharlie: 78点\nDiana: 95点\n合計: 350点\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "辞書でデータを管理しよう",
+            description: "生徒データのリスト（辞書形式）から、平均点以上の生徒名だけを出力してください。",
+            starterCode: `students = [
+    {"name": "Alice", "score": 85},
+    {"name": "Bob", "score": 92},
+    {"name": "Charlie", "score": 78},
+    {"name": "Diana", "score": 95},
+    {"name": "Eve", "score": 70},
+]
+
+# 平均点を計算
+total = sum(s[???] for s in students)
+average = total / len(students)
+print(f"平均点: {average:.1f}")
+
+# 平均以上の生徒を出力
+print("平均以上:")
+for s in students:
+    if s["score"] >= ???:
+        print(f"  {s[???]}")`,
+            hint: "sum() のジェネレータ式で合計を求める。各辞書のキーは \"score\" と \"name\"",
+            expectedOutput: "平均点: 84.0\n平均以上:\n  Alice\n  Bob\n  Diana\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

@@ -160,6 +160,60 @@ print(2 ** 10)   # べき乗`,
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "自己紹介プログラムを作ろう",
+            description: "名前・年齢・好きなプログラミング言語を3行に分けて出力してください。",
+            starterCode: `# 名前を出力
+print("名前: ???")
+
+# 年齢を出力（数字でOK）
+print("年齢: ???")
+
+# 好きな言語を出力
+print("言語: ???")`,
+            hint: "print() を3回呼べばOK。文字列はダブルクォートで囲む",
+            expectedOutput: "名前: Alice\n年齢: 20\n言語: Python\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "演算子を使いこなそう",
+            description: "17を5で割った商・余り・べき乗（5乗）を1行ずつ出力してください。",
+            starterCode: `# 17 ÷ 5 の商（整数除算）
+print(???)
+
+# 17 ÷ 5 の余り
+print(???)
+
+# 17 の 5 乗
+print(???)`,
+            hint: "整数除算は //、余りは %、べき乗は ** を使う",
+            expectedOutput: "3\n2\n1419857\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "sep・end を自在に使おう",
+            description: "print() の sep と end を使って、「2024年5月6日」を1行で出力してください。ただし print() は3回に分けて呼ぶこと。",
+            starterCode: `# print() を3回使って「2024年5月6日」と出力する
+# sep か end をうまく使おう
+print("2024", end=???)
+print("5", end=???)
+print("6日")`,
+            hint: "end= で次の print の前に入る文字を指定できる",
+            expectedOutput: "2024年5月6日\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

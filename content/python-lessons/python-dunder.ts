@@ -278,6 +278,93 @@ print(f"結果が一致: {result == result2}")`,
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "ベクトルの演算子を実装しよう",
+            description: "2Dベクトルクラス Vector(x, y) に __add__（加算）と __repr__（\"Vector(x, y)\" 形式）を実装してください。",
+            starterCode: `class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return f"???(???)"
+
+    def __add__(self, other):
+        return Vector(self.x + ???, self.y + ???)
+
+v1 = Vector(1, 2)
+v2 = Vector(3, 4)
+v3 = v1 + v2
+print(v1)
+print(v2)
+print(v3)`,
+            hint: "__repr__ は \"Vector(x, y)\" という文字列を返す。__add__ は新しい Vector を返す",
+            expectedOutput: "Vector(1, 2)\nVector(3, 4)\nVector(4, 6)\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "コレクションプロトコルを実装しよう",
+            description: "内部にリストを持つ Playlist クラスに、__len__（曲数）と __getitem__（インデックスアクセス）を実装してください。",
+            starterCode: `class Playlist:
+    def __init__(self, name):
+        self.name = name
+        self._tracks = []
+
+    def add(self, track):
+        self._tracks.append(track)
+
+    def __len__(self):
+        return len(???)
+
+    def __getitem__(self, index):
+        return self._tracks[???]
+
+pl = Playlist("お気に入り")
+pl.add("曲A")
+pl.add("曲B")
+pl.add("曲C")
+
+print(len(pl))
+print(pl[0])
+print(pl[2])`,
+            hint: "__len__ は self._tracks の長さを返す。__getitem__ は self._tracks[index] を返す",
+            expectedOutput: "3\n曲A\n曲C\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "__str__ と __repr__ の違い",
+            description: "Book(title, author, year) クラスに __str__（\"title by author\"）と __repr__（\"Book('title', 'author', year)\"）を実装してください。",
+            starterCode: `class Book:
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+
+    def __str__(self):
+        return f"??? by ???"
+
+    def __repr__(self):
+        return f"Book('{self.title}', '{self.author}', {???})"
+
+b = Book("Python入門", "山田太郎", 2024)
+print(str(b))
+print(repr(b))`,
+            hint: "__str__ はユーザー向け、__repr__ は開発者向け（再現可能な形式）",
+            expectedOutput: "Python入門 by 山田太郎\nBook('Python入門', '山田太郎', 2024)\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

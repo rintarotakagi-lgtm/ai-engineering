@@ -208,6 +208,64 @@ print(f"{3.14159:.3f}")`,
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "文字列を逆順にしよう",
+            description: "\"Python\" を逆順にして \"nohtyP\" と出力してください。スライスを使うこと。",
+            starterCode: `s = "Python"
+
+# スライスで逆順に
+reversed_s = ???
+
+print(reversed_s)`,
+            hint: "s[::-1] でステップを -1 にすると逆順になる",
+            expectedOutput: "nohtyP\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "メールアドレスを分解しよう",
+            description: "\"user@example.com\" からユーザー名とドメインを分離して出力してください。",
+            starterCode: `email = "user@example.com"
+
+# @ で分割
+parts = email.split(???)
+
+username = parts[???]
+domain = parts[???]
+
+print(f"ユーザー名: {username}")
+print(f"ドメイン: {domain}")`,
+            hint: "split(\"@\") で @ を区切り文字にして分割できる",
+            expectedOutput: "ユーザー名: user\nドメイン: example.com\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "名前を整形しよう",
+            description: "\"  alice smith  \"（前後にスペースあり）を受け取り、前後のスペースを除去して各単語の先頭を大文字にして出力してください。",
+            starterCode: `name = "  alice smith  "
+
+# 前後のスペースを除去
+name = name.???()
+
+# 各単語の先頭を大文字に
+name = name.???()
+
+print(name)`,
+            hint: "strip() でスペース除去、title() で各単語の先頭を大文字にできる",
+            expectedOutput: "Alice Smith\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

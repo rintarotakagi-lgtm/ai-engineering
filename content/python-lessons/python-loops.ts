@@ -230,6 +230,57 @@ print(word_lengths)`,
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "平方数の合計を求めよう",
+            description: "1² + 2² + 3² + ... + 10² の合計を計算して出力してください。",
+            starterCode: `total = 0
+
+for i in range(1, 11):
+    total += ???
+
+print(total)`,
+            hint: "i**2 を total に加算していく",
+            expectedOutput: "385\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "素数をリストアップしよう",
+            description: "2から30までの素数を全て出力してください。",
+            starterCode: `for n in range(2, 31):
+    is_prime = True
+    for i in range(2, n):
+        if ???:
+            is_prime = False
+            break
+    if is_prime:
+        print(n)`,
+            hint: "n が i で割り切れる（n % i == 0）なら素数ではない",
+            expectedOutput: "2\n3\n5\n7\n11\n13\n17\n19\n23\n29\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "enumerate を使おう",
+            description: "[\"Python\", \"JavaScript\", \"Rust\", \"Go\"] を enumerate を使って、\"1. Python\" のように1始まりの番号付きで出力してください。",
+            starterCode: `languages = ["Python", "JavaScript", "Rust", "Go"]
+
+for ???, lang in enumerate(languages, start=???):
+    print(f"{???}. {lang}")`,
+            hint: "enumerate(list, start=1) で1始まりのインデックスが取れる",
+            expectedOutput: "1. Python\n2. JavaScript\n3. Rust\n4. Go\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

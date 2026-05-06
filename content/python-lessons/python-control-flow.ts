@@ -222,6 +222,68 @@ for code in [200, 201, 404, 401, 500]:
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "FizzBuzz",
+            description: "1から20までの数を出力してください。3の倍数は \"Fizz\"、5の倍数は \"Buzz\"、両方の倍数は \"FizzBuzz\" と出力すること。",
+            starterCode: `for i in range(1, 21):
+    if ???:
+        print("FizzBuzz")
+    elif ???:
+        print("Fizz")
+    elif ???:
+        print("Buzz")
+    else:
+        print(i)`,
+            hint: "FizzBuzz の判定を先に書く（15の倍数 or 3と5の両方の倍数）。% で余りを求める",
+            expectedOutput: "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16\n17\nFizz\n19\nBuzz\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "成績を判定しよう",
+            description: "点数（0〜100）を受け取り、90以上はA、80以上はB、70以上はC、60以上はD、それ未満はFと出力してください。score = 75 で試すこと。",
+            starterCode: `score = 75
+
+if ???:
+    grade = "A"
+elif ???:
+    grade = "B"
+elif ???:
+    grade = "C"
+elif ???:
+    grade = "D"
+else:
+    grade = "F"
+
+print(f"点数: {score}, 評価: {grade}")`,
+            hint: "score >= 90 から順番に書く。上から順に評価されるので大きい方から",
+            expectedOutput: "点数: 75, 評価: C\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "うるう年を判定しよう",
+            description: "year = 2024 がうるう年かどうかを判定してください。うるう年の条件: 4で割り切れる、かつ100で割り切れないか、400で割り切れる。",
+            starterCode: `year = 2024
+
+if ???:
+    print(f"{year}年はうるう年です")
+else:
+    print(f"{year}年はうるう年ではありません")`,
+            hint: "(year % 4 == 0 and year % 100 != 0) or (year % 400 == 0) という条件式になる",
+            expectedOutput: "2024年はうるう年です\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

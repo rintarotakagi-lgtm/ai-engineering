@@ -271,6 +271,98 @@ for text in texts:
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "動物クラスを継承しよう",
+            description: "Animal クラス（name属性、speak()メソッド）を継承して、Dog（\"ワン！\"）と Cat（\"ニャー！\"）クラスを作ってください。speak() は \"name は鳴き声\" 形式で出力すること。",
+            starterCode: `class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        print(f"{self.name} は ...")
+
+class Dog(???):
+    def speak(self):
+        print(f"{self.name} は ワン！")
+
+class Cat(???):
+    def speak(self):
+        print(???)
+
+animals = [Dog("ポチ"), Cat("タマ"), Dog("シロ")]
+for a in animals:
+    a.speak()`,
+            hint: "クラス名(Animal): で継承する。__init__ は親から引き継がれるので不要",
+            expectedOutput: "ポチ は ワン！\nタマ は ニャー！\nシロ は ワン！\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "super() で親の初期化を使おう",
+            description: "Vehicle(make, model) を継承した ElectricVehicle(make, model, range_km) クラスを定義してください。super().__init__() を使って親の初期化を呼び出すこと。info() で \"make model (EVレンジ: range_km km)\" を出力。",
+            starterCode: `class Vehicle:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def info(self):
+        print(f"{self.make} {self.model}")
+
+class ElectricVehicle(Vehicle):
+    def __init__(self, make, model, range_km):
+        ???.__init__(make, model)
+        self.range_km = range_km
+
+    def info(self):
+        print(f"{self.make} {self.model} (EVレンジ: {self.range_km} km)")
+
+ev = ElectricVehicle("Tesla", "Model 3", 560)
+ev.info()`,
+            hint: "super().__init__(make, model) で親の __init__ を呼ぶ",
+            expectedOutput: "Tesla Model 3 (EVレンジ: 560 km)\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "ポリモーフィズムを使おう",
+            description: "Shape クラスを継承した Rectangle(width, height) と Circle(radius) を作り、それぞれの area() を実装してください。Shapes のリストを for ループで回して面積を出力してください。",
+            starterCode: `class Shape:
+    def area(self):
+        return 0
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return ???
+
+class Circle(Shape):
+    PI = 3.14159
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return ???
+
+shapes = [Rectangle(4, 5), Circle(3), Rectangle(2, 8)]
+for shape in shapes:
+    print(f"面積: {shape.area():.2f}")`,
+            hint: "Rectangle は width * height、Circle は PI * radius * radius",
+            expectedOutput: "面積: 20.00\n面積: 28.27\n面積: 16.00\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

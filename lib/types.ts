@@ -5,11 +5,20 @@ export type Quiz = {
   explanation: string;
 };
 
+export type Challenge = {
+  title: string;
+  description: string;
+  starterCode: string;
+  hint?: string;
+  expectedOutput?: string;
+};
+
 export type Block =
   | { type: "text"; content: string }
   | { type: "interactive"; id: string }
   | { type: "quiz"; data: Quiz }
-  | { type: "code-runner"; initialCode: string };
+  | { type: "code-runner"; initialCode: string }
+  | { type: "challenge"; data: Challenge };
 
 export type Section = {
   id: string;

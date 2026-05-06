@@ -276,6 +276,73 @@ except ValueError as e:
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "例外処理で安全な割り算を作ろう",
+            description: "safe_divide(a, b) を定義してください。b が 0 の場合は ZeroDivisionError をキャッチして None を返し、それ以外は a / b を返すこと。",
+            starterCode: `def safe_divide(a, b):
+    try:
+        return a / b
+    except ???:
+        return None
+
+print(safe_divide(10, 2))
+print(safe_divide(7, 0))
+print(safe_divide(9, 3))`,
+            hint: "except ZeroDivisionError: でゼロ除算エラーをキャッチする",
+            expectedOutput: "5.0\nNone\n3.0\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "カスタム例外を作ろう",
+            description: "年齢が 0 未満または 150 超の場合に raise する InvalidAgeError 例外クラスを作り、validate_age(age) 関数で使用してください。",
+            starterCode: `class InvalidAgeError(???):
+    pass
+
+def validate_age(age):
+    if age < 0 or age > 150:
+        raise InvalidAgeError(f"無効な年齢: {age}")
+    return age
+
+try:
+    print(validate_age(25))
+    print(validate_age(-1))
+except InvalidAgeError as e:
+    print(f"エラー: {e}")`,
+            hint: "カスタム例外は Exception を継承する。raise で例外を発生させる",
+            expectedOutput: "25\nエラー: 無効な年齢: -1\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "finally を使おう",
+            description: "try ブロックで 10/x を計算し、ZeroDivisionError は \"割り算エラー\" と出力し、finally で必ず \"処理終了\" と出力する関数 process(x) を定義してください。",
+            starterCode: `def process(x):
+    try:
+        result = 10 / x
+        print(f"結果: {result}")
+    except ???:
+        print("割り算エラー")
+    finally:
+        print("処理終了")
+
+process(2)
+print("---")
+process(0)`,
+            hint: "finally は例外が発生しても必ず実行される",
+            expectedOutput: "結果: 5.0\n処理終了\n---\n割り算エラー\n処理終了\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

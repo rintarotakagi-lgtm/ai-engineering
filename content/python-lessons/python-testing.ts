@@ -302,6 +302,93 @@ print(f"宛先: {call_args.kwargs.get('to') or call_args[1].get('to', call_args[
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "assert でユニットテストを書こう",
+            description: "加算・減算・乗算を行う Calculator クラスを定義し、assert 文で各メソッドをテストしてください。全てのテストが通ったら \"全テスト通過！\" と出力すること。",
+            starterCode: `class Calculator:
+    def add(self, a, b):
+        return a + b
+
+    def subtract(self, a, b):
+        return a - b
+
+    def multiply(self, a, b):
+        return a * b
+
+calc = Calculator()
+
+# テストを書く
+assert calc.add(2, 3) == ???
+assert calc.add(-1, 1) == ???
+assert calc.subtract(10, 4) == ???
+assert calc.multiply(3, 4) == ???
+
+print("全テスト通過！")`,
+            hint: "assert 式 で式が False なら AssertionError が発生する。2+3=5, -1+1=0, 10-4=6, 3*4=12",
+            expectedOutput: "全テスト通過！\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "例外が正しく発生するかテストしよう",
+            description: "0 以下の引数で ValueError を発生させる positive_only(n) 関数を定義し、正常系と異常系を assert でテストしてください。",
+            starterCode: `def positive_only(n):
+    if n <= 0:
+        raise ValueError(f"正の数が必要です: {n}")
+    return n
+
+# 正常系のテスト
+assert positive_only(5) == ???
+assert positive_only(1) == ???
+
+# 異常系のテスト（ValueError が発生することを確認）
+try:
+    positive_only(0)
+    assert False, "例外が発生しなかった"
+except ???:
+    pass
+
+try:
+    positive_only(-3)
+    assert False, "例外が発生しなかった"
+except ValueError:
+    pass
+
+print("全テスト通過！")`,
+            hint: "try/except で例外が発生することを確認。例外が発生しなかった場合は assert False でテスト失敗",
+            expectedOutput: "全テスト通過！\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "テストヘルパーを作ろう",
+            description: "期待値と実際値を比較し、一致すれば \"PASS: テスト名\"、一致しなければ \"FAIL: テスト名 (expected: x, got: y)\" と出力する assert_equal(name, expected, actual) 関数を定義してください。",
+            starterCode: `def assert_equal(name, expected, actual):
+    if expected == actual:
+        print(f"PASS: {name}")
+    else:
+        print(f"FAIL: {name} (expected: {???}, got: {???})")
+
+def add(a, b):
+    return a + b
+
+assert_equal("2+3=5", 5, add(2, 3))
+assert_equal("0+0=0", 0, add(0, 0))
+assert_equal("わざと失敗", 10, add(2, 3))`,
+            hint: "expected と actual を比較。f-string で expected と actual の値を出力",
+            expectedOutput: "PASS: 2+3=5\nPASS: 0+0=0\nFAIL: わざと失敗 (expected: 10, got: 5)\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

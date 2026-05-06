@@ -211,6 +211,73 @@ print(x is not None)`,
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "BMIを計算しよう",
+            description: "身長170cm・体重65kgのBMIを計算して出力してください。BMI = 体重(kg) ÷ 身長(m)²",
+            starterCode: `height_cm = 170
+weight_kg = 65
+
+# 身長をメートルに変換
+height_m = ???
+
+# BMI を計算
+bmi = ???
+
+print(f"BMI: {bmi:.1f}")`,
+            hint: "身長はcmをmに変換（÷100）してから2乗する",
+            expectedOutput: "BMI: 22.5\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "型変換をマスターしよう",
+            description: "文字列 \"3.14\" を float に変換し、さらに int に変換して、それぞれ出力してください。最後に元の値の型も確認しよう。",
+            starterCode: `s = "3.14"
+
+# float に変換
+f = ???
+
+# int に変換（float からでOK）
+i = ???
+
+print(f)
+print(i)
+print(type(s).__name__, type(f).__name__, type(i).__name__)`,
+            hint: "float() と int() を使う。int(\"3.14\") は直接はエラーになるので int(float(...)) の順で",
+            expectedOutput: "3.14\n3\nstr float int\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "複合代入演算子を使おう",
+            description: "変数 score を 0 から始めて、+= で10点を5回加算し、最後に2倍にして出力してください。",
+            starterCode: `score = 0
+
+# += で10点を5回加算
+score += ???
+score += ???
+score += ???
+score += ???
+score += ???
+
+# 2倍にする
+score ???= 2
+
+print(score)`,
+            hint: "score += 10 を5回書く。掛け算の複合代入は *=",
+            expectedOutput: "100\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

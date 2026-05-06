@@ -1,45 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-
-declare global {
-  interface Window {
-    loadPyodide: (config?: { indexURL?: string }) => Promise<PyodideInterface>;
-  }
-}
-
-interface PyodideInterface {
-  runPython: (code: string) => unknown;
-  globals: { set: (key: string, value: unknown) => void; get: (key: string) => { getvalue: () => string } };
-}
-
-let pyodideInstance: PyodideInterface | null = null;
-let pyodideLoading: Promise<PyodideInterface> | null = null;
-
-async function loadPyodideSingleton(): Promise<PyodideInterface> {
-  if (pyodideInstance) return pyodideInstance;
-  if (pyodideLoading) return pyodideLoading;
-
-  pyodideLoading = (async () => {
-    if (!document.querySelector('script[data-pyodide]')) {
-      await new Promise<void>((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js";
-        script.dataset.pyodide = "true";
-        script.onload = () => resolve();
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-    }
-    const pyodide = await window.loadPyodide({
-      indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/",
-    });
-    pyodideInstance = pyodide;
-    return pyodide;
-  })();
-
-  return pyodideLoading;
-}
+import { loadPyodideSingleton, PYTHON_WRAPPER } from "@/lib/pyodide";
 
 export default function PythonRunner({ initialCode }: { initialCode: string }) {
   const [code, setCode] = useState(initialCode);
@@ -60,28 +22,10 @@ export default function PythonRunner({ initialCode }: { initialCode: string }) {
       setLoading(false);
 
       pyodide.globals.set("_user_code", code);
-      pyodide.runPython(`
-import sys
-from io import StringIO
+      await pyodide.runPythonAsync(PYTHON_WRAPPER);
 
-_io_out = StringIO()
-_io_err = StringIO()
-_orig_out = sys.stdout
-_orig_err = sys.stderr
-sys.stdout = _io_out
-sys.stderr = _io_err
-
-try:
-    exec(_user_code, {})
-except Exception as _e:
-    sys.stderr.write(type(_e).__name__ + ": " + str(_e))
-finally:
-    sys.stdout = _orig_out
-    sys.stderr = _orig_err
-`);
-
-      const stdout = pyodide.globals.get("_io_out").getvalue();
-      const stderr = pyodide.globals.get("_io_err").getvalue();
+      const stdout = pyodide.globals.get("_out_val") as string;
+      const stderr = pyodide.globals.get("_err_val") as string;
 
       if (stderr) {
         setOutput(stderr);

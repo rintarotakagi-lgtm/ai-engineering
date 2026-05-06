@@ -264,6 +264,62 @@ for grade in sorted(by_grade):
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "Counter で頻度集計しよう",
+            description: "文字列 \"programming\" の各文字の出現回数を Counter で集計し、最も多い3文字とその回数を出力してください。",
+            starterCode: `from collections import Counter
+
+text = "programming"
+counter = Counter(???)
+
+# 最も多い3文字
+for char, count in counter.most_common(???):
+    print(f"'{char}': {count}回")`,
+            hint: "Counter(文字列) で各文字の出現回数を集計。most_common(3) で上位3件を取得",
+            expectedOutput: "'g': 2回\n'r': 2回\n'm': 2回\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "itertools で組み合わせを生成しよう",
+            description: "[\"A\", \"B\", \"C\", \"D\"] から2つを選ぶ組み合わせを全て出力してください。",
+            starterCode: `from itertools import combinations
+
+items = ["A", "B", "C", "D"]
+
+for combo in combinations(items, ???):
+    print(combo)`,
+            hint: "combinations(リスト, r) で r 個を選ぶ組み合わせを生成できる",
+            expectedOutput: "('A', 'B')\n('A', 'C')\n('A', 'D')\n('B', 'C')\n('B', 'D')\n('C', 'D')\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "math モジュールを使おう",
+            description: "math モジュールを使って、半径 r = 7 の円の面積と円周を計算して出力してください。π は math.pi を使うこと。",
+            starterCode: `import math
+
+r = 7
+
+area = math.??? * r ** 2
+circumference = 2 * math.??? * r
+
+print(f"面積: {area:.4f}")
+print(f"円周: {circumference:.4f}")`,
+            hint: "math.pi で円周率 π にアクセスできる",
+            expectedOutput: "面積: 153.9380\n円周: 43.9823\n",
+          },
+        },
+      ],
+    },
   ],
 };
 

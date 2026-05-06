@@ -293,6 +293,84 @@ print(sale)`,
         },
       ],
     },
+    {
+      id: "challenges",
+      title: "チャレンジ",
+      blocks: [
+        {
+          type: "challenge" as const,
+          data: {
+            title: "タイマーデコレータを作ろう",
+            description: "関数の実行前後に \"開始\" と \"終了\" を出力するデコレータ log_call を実装してください（時間計測は不要、出力のみ）。",
+            starterCode: `def log_call(func):
+    def wrapper(*args, **kwargs):
+        print(f"{func.???}: 開始")
+        result = func(*args, **kwargs)
+        print(f"{func.__name__}: 終了")
+        return result
+    return wrapper
+
+@log_call
+def greet(name):
+    print(f"こんにちは、{name}!")
+
+greet("Alice")`,
+            hint: "func.__name__ で関数名を取得できる",
+            expectedOutput: "greet: 開始\nこんにちは、Alice!\ngreet: 終了\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "メモ化デコレータを作ろう",
+            description: "引数に対する結果をキャッシュする memoize デコレータを実装してください。2回目以降は \"キャッシュから取得\" と表示して保存済みの値を返すこと。",
+            starterCode: `def memoize(func):
+    cache = {}
+    def wrapper(*args):
+        if args in cache:
+            print("キャッシュから取得")
+            return cache[???]
+        result = func(*args)
+        cache[args] = result
+        return result
+    return wrapper
+
+@memoize
+def square(n):
+    return n * n
+
+print(square(4))
+print(square(4))
+print(square(5))
+print(square(4))`,
+            hint: "cache は dict。args をキーにして結果を保存・取得する",
+            expectedOutput: "16\nキャッシュから取得\n16\n25\nキャッシュから取得\n16\n",
+          },
+        },
+        {
+          type: "challenge" as const,
+          data: {
+            title: "引数付きデコレータを作ろう",
+            description: "関数を n 回繰り返す repeat(n) デコレータを実装してください。@repeat(3) とすると関数が3回実行される。",
+            starterCode: `def repeat(n):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(???):
+                func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+@repeat(???)
+def say_hello():
+    print("Hello!")
+
+say_hello()`,
+            hint: "repeat(n) が decorator を返し、decorator が wrapper を返す3層構造",
+            expectedOutput: "Hello!\nHello!\nHello!\n",
+          },
+        },
+      ],
+    },
   ],
 };
 
