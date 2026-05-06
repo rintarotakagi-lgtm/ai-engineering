@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 
 const BASE_URL = "https://ai-engineering-three.vercel.app";
 

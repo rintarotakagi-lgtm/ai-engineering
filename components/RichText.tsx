@@ -1,83 +1,90 @@
 "use client";
 
-import { InlineFormula, BlockFormula } from "./Math";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import type { Components } from "react-markdown";
 
 type Props = {
   content: string;
 };
 
-type Segment =
-  | { type: "text"; value: string }
-  | { type: "bold"; value: string }
-  | { type: "inline-math"; value: string }
-  | { type: "block-math"; value: string };
+const components: Components = {
+  // Headings
+  h1: ({ children }) => (
+    <h1 className="mb-4 mt-8 text-2xl font-bold text-zinc-900 dark:text-zinc-100">{children}</h1>
+  ),
+  h2: ({ children }) => (
+    <h2 className="mb-3 mt-6 text-xl font-bold text-zinc-900 dark:text-zinc-100">{children}</h2>
+  ),
+  h3: ({ children }) => (
+    <h3 className="mb-2 mt-5 text-lg font-semibold text-zinc-900 dark:text-zinc-100">{children}</h3>
+  ),
 
-function parseInline(text: string): Segment[] {
-  const segments: Segment[] = [];
-  const pattern = /\*\*(.+?)\*\*|\$(.+?)\$/g;
-  let lastIndex = 0;
-  let match;
+  // Paragraph
+  p: ({ children }) => (
+    <p className="leading-7 text-zinc-700 dark:text-zinc-300">{children}</p>
+  ),
 
-  while ((match = pattern.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      segments.push({ type: "text", value: text.slice(lastIndex, match.index) });
-    }
-    if (match[1] !== undefined) {
-      segments.push({ type: "bold", value: match[1] });
-    } else if (match[2] !== undefined) {
-      segments.push({ type: "inline-math", value: match[2] });
-    }
-    lastIndex = pattern.lastIndex;
-  }
+  // Bold / italic
+  strong: ({ children }) => (
+    <strong className="font-semibold text-zinc-900 dark:text-zinc-100">{children}</strong>
+  ),
+  em: ({ children }) => <em className="italic">{children}</em>,
 
-  if (lastIndex < text.length) {
-    segments.push({ type: "text", value: text.slice(lastIndex) });
-  }
+  // Inline code
+  code: ({ children, className }) => {
+    const isBlock = className?.startsWith("language-");
+    if (isBlock) return <code className={className}>{children}</code>;
+    return (
+      <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-sm text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+        {children}
+      </code>
+    );
+  },
 
-  return segments;
-}
+  // Code block
+  pre: ({ children }) => (
+    <pre className="my-4 overflow-x-auto rounded-xl bg-zinc-900 px-5 py-4 text-sm leading-6 text-zinc-100 dark:bg-zinc-800">
+      {children}
+    </pre>
+  ),
 
-function renderInlineSegments(segments: Segment[]) {
-  return segments.map((seg, i) => {
-    switch (seg.type) {
-      case "text":
-        return <span key={i}>{seg.value}</span>;
-      case "bold":
-        return (
-          <strong key={i} className="font-semibold">
-            {seg.value}
-          </strong>
-        );
-      case "inline-math":
-        return <InlineFormula key={i} math={seg.value} />;
-      default:
-        return null;
-    }
-  });
-}
+  // Lists
+  ul: ({ children }) => (
+    <ul className="my-2 space-y-1 pl-5">{children}</ul>
+  ),
+  ol: ({ children }) => (
+    <ol className="my-2 list-decimal space-y-1 pl-5">{children}</ol>
+  ),
+  li: ({ children }) => (
+    <li className="leading-7 text-zinc-700 marker:text-zinc-400 dark:text-zinc-300 [&>ul]:my-1">
+      {children}
+    </li>
+  ),
+
+  // Blockquote
+  blockquote: ({ children }) => (
+    <blockquote className="my-4 border-l-4 border-zinc-300 pl-4 text-zinc-500 dark:border-zinc-600 dark:text-zinc-400">
+      {children}
+    </blockquote>
+  ),
+
+  // Horizontal rule
+  hr: () => <hr className="my-6 border-zinc-200 dark:border-zinc-700" />,
+};
 
 export default function RichText({ content }: Props) {
-  // Split by block math ($$...$$) first
-  const blockParts = content.split(/\$\$([\s\S]+?)\$\$/);
-
   return (
-    <div className="space-y-4 text-base leading-7 text-zinc-700 dark:text-zinc-300">
-      {blockParts.map((part, i) => {
-        // Odd indices are block math content
-        if (i % 2 === 1) {
-          return <BlockFormula key={i} math={part.trim()} />;
-        }
-
-        // Even indices are text — split by newlines for paragraphs
-        const paragraphs = part
-          .split(/\n\n+/)
-          .map((p) => p.trim())
-          .filter(Boolean);
-
-        return paragraphs.map((paragraph, j) => (
-          <p key={`${i}-${j}`}>{renderInlineSegments(parseInline(paragraph))}</p>
-        ));
-      })}
+    <div className="space-y-4 text-base">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+        components={components}
+      >
+        {content}
+      </ReactMarkdown>
     </div>
   );
 }
